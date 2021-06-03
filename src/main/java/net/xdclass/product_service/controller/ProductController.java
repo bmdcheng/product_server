@@ -25,6 +25,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
     @RequestMapping("/list")
     public Object listProduct(){
         return productService.listProduct();
@@ -32,7 +33,7 @@ public class ProductController {
 
     @RequestMapping("/findById")
     public Object findById(@RequestParam("id") int id) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(10);
+       // TimeUnit.SECONDS.sleep(10);
 
         Product product = productService.findById(id);
         Product result = new Product();
