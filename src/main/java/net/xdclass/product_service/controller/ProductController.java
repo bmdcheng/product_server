@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author chengcheng123
  * @date 2021/6/1 23:45
@@ -29,7 +31,9 @@ public class ProductController {
     }
 
     @RequestMapping("/findById")
-    public Object findById(@RequestParam("id") int id){
+    public Object findById(@RequestParam("id") int id) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
+
         Product product = productService.findById(id);
         Product result = new Product();
         BeanUtils.copyProperties(product,result);
