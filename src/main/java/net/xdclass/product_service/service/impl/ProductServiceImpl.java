@@ -2,6 +2,8 @@ package net.xdclass.product_service.service.impl;
 
 import net.xdclass.product_service.domain.Product;
 import net.xdclass.product_service.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     private static final HashMap<Integer,Product> CACHMAP =new HashMap<>();
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     static{
         Product product1 = new Product(1, "冰箱", 100, 100);
@@ -37,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(int id) {
-
+        logger.info("find by id");
         return CACHMAP.get(id);
     }
 }
