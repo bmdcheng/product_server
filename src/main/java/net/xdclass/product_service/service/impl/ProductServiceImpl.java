@@ -18,7 +18,6 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     private static final HashMap<Integer,Product> CACHMAP =new HashMap<>();
-
     Logger logger = LoggerFactory.getLogger(getClass());
 
     static{
@@ -41,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(int id) {
-        logger.info("find by id "+id);
+        logger.info("find by id");
         return CACHMAP.get(id);
     }
 }
