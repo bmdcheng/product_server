@@ -1,0 +1,25 @@
+#server:
+#  port: 8771
+#指定注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#服务的名称
+spring:
+  application:
+    name: product-service
+  cloud:
+    config:
+      discovery:
+        service-id: config-server
+        enabled: true
+        #config-server/{name}-{profile}
+      profile: test
+      #默认laber是master,建议使用laber的方式来区分
+      #而不是profile，因为在返从配置中心拉取数据的时候
+      #会git上的{name}-文件里面抽取当前文件没有，而其他{name}文件中存在的属性返回回来
+      #一不小心就会造成问题
+      #例如：{name}-dev注释的的配置，在{name}-test中没注释，
+      #那么，{name}-dev就会将没注释的那个配置返回回来
+      label: test
